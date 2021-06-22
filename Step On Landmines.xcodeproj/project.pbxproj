@@ -13,6 +13,8 @@
 		D42F26282679C0F600C16022 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D42F26262679C0F600C16022 /* Main.storyboard */; };
 		D42F262A2679C0FC00C16022 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D42F26292679C0FC00C16022 /* Assets.xcassets */; };
 		D42F262D2679C0FC00C16022 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D42F262B2679C0FC00C16022 /* LaunchScreen.storyboard */; };
+		D42F2635267C608D00C16022 /* StepOnLadnminesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42F2634267C608D00C16022 /* StepOnLadnminesViewController.swift */; };
+		D4FB64FB2680A31B001607F3 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FB64FA2680A31B001607F3 /* TimerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		D42F26292679C0FC00C16022 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D42F262C2679C0FC00C16022 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D42F262E2679C0FC00C16022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D42F2634267C608D00C16022 /* StepOnLadnminesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepOnLadnminesViewController.swift; sourceTree = "<group>"; };
+		D4FB64FA2680A31B001607F3 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				D42F26202679C0F600C16022 /* AppDelegate.swift */,
 				D42F26222679C0F600C16022 /* SceneDelegate.swift */,
 				D42F26242679C0F600C16022 /* ViewController.swift */,
+				D42F2634267C608D00C16022 /* StepOnLadnminesViewController.swift */,
+				D4FB64FA2680A31B001607F3 /* TimerViewController.swift */,
 				D42F26262679C0F600C16022 /* Main.storyboard */,
 				D42F26292679C0FC00C16022 /* Assets.xcassets */,
 				D42F262B2679C0FC00C16022 /* LaunchScreen.storyboard */,
@@ -138,7 +144,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D42F26252679C0F600C16022 /* ViewController.swift in Sources */,
+				D42F2635267C608D00C16022 /* StepOnLadnminesViewController.swift in Sources */,
 				D42F26212679C0F600C16022 /* AppDelegate.swift in Sources */,
+				D4FB64FB2680A31B001607F3 /* TimerViewController.swift in Sources */,
 				D42F26232679C0F600C16022 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
