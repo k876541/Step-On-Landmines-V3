@@ -36,6 +36,8 @@ class StepOnLandminesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         getRecord() //呼叫core data的資料
         
         setFloor()//生成地圖
@@ -118,6 +120,7 @@ class StepOnLandminesViewController: UIViewController {
             }
             print()
         }
+        print()
     }
     
     //把炸彈位置存到abomb[Int]用來跟[UIButton]做應對
@@ -154,7 +157,7 @@ class StepOnLandminesViewController: UIViewController {
             controller.addAction(action)
             present(controller, animated: true) {[self] in
                 record() //把時間丟入排名裡面
-                save(first: firstLabel.text!, second: secondLabel.text!, thrid: thirdLabel.text!)//把排行榜存入core data
+//                save(first: firstLabel.text!, second: secondLabel.text!, thrid: thirdLabel.text!)//把排行榜存入core data
             }
         }
     }
@@ -225,16 +228,33 @@ class StepOnLandminesViewController: UIViewController {
         firstLabel.text = leaderboardA[0]
         secondLabel.text = leaderboardA[1]
         thirdLabel.text = leaderboardA[2]
+        
+        save(first: leaderboardA[0], second: leaderboardA[1], thrid: leaderboardA[2])
         leaderboardA.removeAll()
     }
     
     //存入core data
     func save(first:String, second:String, thrid:String){
         
-        leaderBoardList[0].time = first
-        leaderBoardList[1].time = second
-        leaderBoardList[2].time = thrid
+        let context = container.viewContext
+        let aList = LeaderBoard(context: context)
+        let bList = LeaderBoard(context: context)
+        let cList = LeaderBoard(context: context)
 
+        while leaderBoardList.count > 0 {
+        context.delete(leaderBoardList[leaderBoardList.count - 1])
+        leaderBoardList.removeLast()
+        }
+        
+        aList.time = first
+        leaderBoardList.append(aList)
+
+        bList.time = second
+        leaderBoardList.append(bList)
+        
+        cList.time = thrid
+        leaderBoardList.append(cList)
+    
         container.saveContext() //core data儲存
     }
     
@@ -246,13 +266,26 @@ class StepOnLandminesViewController: UIViewController {
         } catch {
             print("error")
         }
-        firstLabel.text = leaderBoardList[0].time
-        secondLabel.text = leaderBoardList[1].time
-        thirdLabel.text = leaderBoardList[2].time
-        for i in 0...2{
-        print(leaderBoardList[i])
+        
+        
+        if leaderBoardList.count != 0{
+            for _ in 1 ... 3 {
+                leaderboardA.append("")
+            }
+            
+            leaderboardA[0] = leaderBoardList[0].time!
+            leaderboardA[1] = leaderBoardList[1].time!
+            leaderboardA[2] = leaderBoardList[2].time!
+            leaderboardA.sort()
+            
+            firstLabel.text = leaderboardA[0]
+            secondLabel.text = leaderboardA[1]
+            thirdLabel.text = leaderboardA[2]
+            leaderboardA.removeAll()
         }
+        
     }
+    
     
     
     /*
@@ -315,13 +348,20 @@ class StepOnLandminesViewController: UIViewController {
     
     //復原排行榜 /看起來像是清除紀錄，實際上是把 59:59.99 全部存回去coredata裡面
     @IBAction func clearRecord(_ sender: UIButton) {
-        for i in 0 ... 2{
-            leaderBoardList[i].time = "59:59.99"
+
+        while leaderBoardList.count > 0 {
+        let context = container.viewContext
+        context.delete(leaderBoardList[leaderBoardList.count - 1])
+        leaderBoardList.removeLast()
         }
+        
+        firstLabel.text = "59:59.99"
+        secondLabel.text = "59:59.99"
+        thirdLabel.text = "59:59.99"
+        
         container.saveContext()
-        firstLabel.text = "59.59.99"
-        secondLabel.text = "59.59.99"
-        thirdLabel.text = "59.59.99"
+
+        
     }
 }
 
