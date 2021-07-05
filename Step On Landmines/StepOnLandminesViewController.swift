@@ -241,6 +241,7 @@ class StepOnLandminesViewController: UIViewController {
         let bList = LeaderBoard(context: context)
         let cList = LeaderBoard(context: context)
 
+        //存檔之前把舊資料清除
         while leaderBoardList.count > 0 {
         context.delete(leaderBoardList[leaderBoardList.count - 1])
         leaderBoardList.removeLast()
@@ -266,7 +267,6 @@ class StepOnLandminesViewController: UIViewController {
         } catch {
             print("error")
         }
-        
         
         if leaderBoardList.count != 0{
             for _ in 1 ... 3 {
